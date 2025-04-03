@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!--Favicon-->
+    <link rel="icon" href="images/favicon.ico">
+    
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!--Theme from https://bootswatch.com/lux/-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!--Info header--->
+    <header class="text-bg-primary text-center fs-5 py-1">
+        <p class="mb-0">Starta säsongen - upp till 50% rabatt på vårsäsong</p>
+    </header>
+
+    <!--NAV 2-->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid ms-5">
+            <!--Namnet på webbsidan-->
+            <a class="navbar-brand" href="index.html">Clothing shop</a>
+            
+            <button 
+                type="button" 
+                class="rounded navbar-toggler border border-dark" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#hamburgermenyn2" 
+                aria-controls="hamburgermenyn2" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="hamburgermenyn2">
+                <ul class="navbar-nav mb-2 mb-lg-0 me-auto ms-lg-4 gap-3">
+                    <li><a class="nav-link mx-3" href="#" id="homeLink">HOME</a></li>
+                    <li><a class="nav-link mx-3 categoryLink" href="#" id="womenLink">WOMEN</a></li>
+                    <li><a class="nav-link mx-3 categoryLink" href="#" id="menLink">MEN</a></li>
+                    <li><a class="nav-link mx-3 categoryLink" href="#" id="jewelryLink">Jewelry</a></li>
+                    <li><a class="nav-link mx-3 categoryLink" href="#" id="electronicsLink">Electronics</a></li>
+                </ul>
+                
+                <!--Cart-->
+                <div class="d-flex">
+                    <button type="button" class="btn btn-outline-dark rounded py-2 fs-6 me-2">
+                        <i class="bi bi-bag-fill me-2"></i>
+                        <strong>CART</strong>
+                        <span class="badge bg-dark text-white ms-2 rounded-pill">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--Home Banner-->
+    <div id="homeBanner" class="text-center text-white">
+        <div class="row gx-0">
+            <div class="col-6 position-relative">
+                <img src="images/autumn-fashion-look-gorgeous-european-brunette-gir-trendy-white-jacket-dress-with-print-posing-holding-leather-handbag-svartvit.jpg" class="img-fluid w-100" alt="Image 1">
+                <button class="btn-overlay categoryLink" data-category="women's clothing">Women</button>
+            </div>
+            <div class="col-6 position-relative">
+                <img src="images/portrait-bearded-male-dressed-grey-jacket-hat-isolated-grey-background_613910-3150-svartvit.jpg" class="img-fluid w-100" alt="Image 2">
+                <button class="btn-overlay categoryLink" data-category="men's clothing">Men</button>
+            </div>
+            <div class="col-6 position-relative">
+                <img src="images/jewelry-lifestyle-flat-layout-with-place-text-jewellery-background-mockup-banner-fashion-accessories_460848-12598-svartvit.jpg" class="img-fluid w-100" alt="Image 3">
+                <button class="btn-overlay categoryLink" data-category="jewelery">Jewelry</button>
+            </div>
+            <div class="col-6 position-relative">
+                <img src="images/headphones-8210087_1280-svartvit.jpg" class="img-fluid w-100" alt="Image 4">
+                <button class="btn-overlay categoryLink" data-category="electronics">Electronics</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Product Section-->
+    <section class="py-2">
+        <div class="container-fluid px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start" id="productContainer"></div>
+        </div>
+    </section>
+
+    <!-- Beställningsformulär Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="orderModalLabel">Beställ produkt</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <!-- Här uppdateras innehållet dynamiskt från JavaScript -->
+                <div class="modal-body" id="productModalContent">
+                </div>
+
+
+                <div class="modal-body">
+                    <form id="orderForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Namn</label>
+                            <input type="text" class="form-control" id="customerName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">E-post</label>
+                            <input type="text" class="form-control" id="customerEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Telefon</label>
+                            <input type="text" class="form-control" id="customerPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerAddress" class="form-label">Gatuadress</label>
+                            <input type="text" class="form-control" id="customerAddress" autocomplete="address-line1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerZip" class="form-label">Postnummer</label>
+                            <input type="text" class="form-control" id="customerZip">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerCity" class="form-label">Ort</label>
+                            <input type="text" class="form-control" id="customerCity">
+                        </div>
+                        <button type="submit" class="btn btn-primary container-fluid rounded ">Skicka beställning</button>
+                    </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="container-fluid bg-dark py-4">
+        <div>
+            <p class="text-center text-white-50">Follow us</p>
+            <div class="text-center text-white-50">
+                <a id="linkSocial" href="https://github.com/SebastianValdesGomez" target="_blank">
+                    <i class="bi bi-github fs-4 mx-3"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!--Scripts-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/fakeStore.js"></script>
+
+</body>
+</html>
